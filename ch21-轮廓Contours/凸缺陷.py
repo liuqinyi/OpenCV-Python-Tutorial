@@ -25,6 +25,7 @@ import cv2
 import numpy as np
 
 img = cv2.imread('star.jpg')
+cv2.imshow('init',img)
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 ret, thresh = cv2.threshold(img_gray, 127, 255, 0)

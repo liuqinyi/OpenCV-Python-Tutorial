@@ -15,8 +15,8 @@ img = cv2.imread('../data/star.png', 0)
 
 ret, thresh = cv2.threshold(img, 127, 255, 0)
 # ret, binary = cv2.threshold(gray,127,255,cv2.THRESH_BINARY)
-# contours,hierarchy = cv2.findContours(thresh, 1, 2)
-image, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+contours,hierarchy = cv2.findContours(thresh, 1, 2)
+#image, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 # contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 
 print('contours len:', len(contours))
@@ -30,15 +30,14 @@ pprint(M)  # 好看一点
 # 根据 这些矩的值 我们可以 计算出对象的重心
 cx = int(M['m10'] / M['m00'])
 cy = int(M['m01'] / M['m00'])
-print('重心:', cx, cy)
-
+print('重心:；', cx, cy)
 #
 area = cv2.contourArea(cnt)
-print('面积:', area)
+print('面积：', area)
 
 # 第二参数可以用来指定对象的形状是闭合的 True   是打开的FALSE 一条曲线 。
 perimeter = cv2.arcLength(cnt, True)
-print('周长:', perimeter)
+print("周长:", perimeter)
 
 '''
 将轮廓形状近似到另外一种由更少点组成的 廓形状 新 廓的点的数目 由我们 定的准确度来决定。
@@ -54,8 +53,8 @@ epsilon = 0.1*cv2.arcLength(cnt,True)
 print('epsilon:',epsilon)
 
 approx = cv2.approxPolyDP(cnt,epsilon,True)
-cv2.drawContours(image,[approx],0,(255,0,0),3)
-cv2.imshow('approxPolyDP',image)
+cv2.drawContours(img,[approx],0,(255,0,0),3)
+cv2.imshow('approxPolyDP',img)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
