@@ -1,3 +1,4 @@
+# -*-coding:utf8-*-#
 '''
 假如你的目标对 只在图像中出现了很多次怎么办呢
 函数 cv.imMaxLoc() 只会给出最大值和最小值。此时 我们就 使用阈值了。
@@ -11,10 +12,12 @@ import numpy as np
 # from matplotlib import pyplot as plt
 
 img_rgb = cv2.imread('../data/mario.png')
+cv2.imshow("Native",img_rgb)
 img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY)
 template = cv2.imread('../data/mario_coin.png', 0)
+# 获取匹配对象的宽和高
 w, h = template.shape[::-1]
-
+# 获取匹配对象
 res = cv2.matchTemplate(img_gray, template, cv2.TM_CCOEFF_NORMED)
 threshold = 0.8
 loc = np.where(res >= threshold)
