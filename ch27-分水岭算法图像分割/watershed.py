@@ -50,7 +50,6 @@ cv2.imshow('unknown', unknown)
 
 # 腐蚀
 
-
 # Marker labelling创建标签
 ret, markers1 = cv2.connectedComponents(sure_fg)
 # Add one to all labels so that sure background is not 0, but 1

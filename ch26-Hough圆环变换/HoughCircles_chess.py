@@ -8,8 +8,8 @@
 HoughCircles_chess.py:
 围棋
 """
-
 import cv2
+import cv2.cv as cv
 import numpy as np
 from collections import Counter
 
@@ -37,7 +37,7 @@ cv2.imshow('gray', gray)
 
 # HoughCircles(image, method, dp, minDist, circles=None, param1=None, param2=None, minRadius=None, maxRadius=None)
 # circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 1, 20, param1=50, param2=30, minRadius=10, maxRadius=40)#有一些没有检测到
-circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 1, 20, param1=100, param2=30, minRadius=10, maxRadius=50)
+circles = cv2.HoughCircles(gray, cv.CV_HOUGH_GRADIENT, 1, 20, param1=100, param2=30, minRadius=10, maxRadius=50)
 
 if circles is None:
     exit(-1)
